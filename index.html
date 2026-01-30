@@ -11,35 +11,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
-      background: linear-gradient(
-        135deg,
-        #c9a36a 0%,
-        #2ec4c6 50%,
-        #d946ef 100%
-      );
+      background: linear-gradient(135deg, #c9a36a 0%, #2ec4c6 50%, #d946ef 100%);
       color: #111827;
       line-height: 1.6;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 0 20px;
-    }
-
-    h1, h2, h3 {
-      font-weight: 700;
-      color: #111827;
-    }
+    h1, h2, h3 { font-weight: 700; color: #111827; }
 
     button {
       border: none;
@@ -52,18 +34,9 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+    button:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.3); }
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.3);
-    }
-
-    /* Bouton "Découvrir les offres" réduit */
-    .hero button {
-      padding: 8px 16px;
-      font-size: 0.9rem;
-      border-radius: 12px;
-    }
+    .hero button { padding: 8px 16px; font-size: 0.9rem; border-radius: 12px; }
 
     .topbar {
       background: rgba(255,255,255,0.85);
@@ -72,75 +45,58 @@
       top: 0;
       z-index: 50;
       border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-
-    .topbar-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
       height: 64px;
+      padding: 0 20px;
     }
 
-    .topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .topbar-left img { height: 40px; width: auto; display: block; }
 
-    .topbar-left img {
-      height: 40px;
-      width: auto;
-    }
+    .topbar-actions { display: flex; gap: 12px; align-items: center; }
 
-    .topbar-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
+    .topbar-actions a {
+      padding: 8px 14px;
+      background: linear-gradient(135deg, #2ec4c6, #d946ef);
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease;
     }
+    .topbar-actions a:hover { transform: translateY(-2px); }
 
-    select {
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-    }
+    select { padding: 8px 12px; border-radius: 8px; border: none; cursor: pointer; }
 
     .hero {
       text-align: center;
-      padding: 100px 0 60px;
+      padding: 100px 20px 60px;
       color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
     }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      color: white;
-    }
+    .hero h1 { font-size: 3rem; color: white; }
+    .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 600px; }
 
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-      color: rgba(255,255,255,0.9);
-    }
+    section { padding: 50px 20px; }
 
-    section {
-      padding: 50px 0;
-    }
+    /* Comment ça marche */
+    .section-title { text-align: center; font-size: 2rem; margin-bottom: 30px; color: white; }
 
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 30px;
-      color: white;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    .how-it-works {
+      display: flex;
+      justify-content: center;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .card {
+    .how-it-works .card {
+      flex: 1 1 250px;
+      max-width: 300px;
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(10px);
       border-radius: 20px;
@@ -149,111 +105,52 @@
       text-align: center;
     }
 
-    .offer {
-      color: #d946ef;
-      font-weight: 700;
-    }
+    .offer { color: #d946ef; font-weight: 700; }
 
-    .swiper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-    }
+    .swiper { display: flex; align-items: center; justify-content: center; gap: 20px; }
+    .swipe-card { width: 320px; min-height: 220px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .nav-btn { background: rgba(255,255,255,0.8); color: #111827; border-radius: 50%; padding: 10px 14px; }
 
-    .swipe-card {
-      width: 320px;
-      min-height: 220px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+    .cta { text-align: center; color: white; }
+    .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+    .cta-btn { background: rgba(255,255,255,0.95); color: #111827; min-width: 250px; padding: 12px 20px; border-radius: 12px; }
+    .cta-btn span { display: block; margin-top: 6px; font-size: 0.85rem; font-weight: 400; }
 
-    .nav-btn {
-      background: rgba(255,255,255,0.8);
-      color: #111827;
-      border-radius: 50%;
-      padding: 10px 14px;
-    }
+    footer { background: rgba(0,0,0,0.4); color: white; text-align: center; padding: 20px 0; font-size: 0.9rem; backdrop-filter: blur(8px); }
 
-    .cta {
-      text-align: center;
-      color: white;
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .cta-btn {
-      background: rgba(255,255,255,0.95);
-      color: #111827;
-      min-width: 250px;
-      padding: 12px 20px;
-      border-radius: 12px;
-    }
-
-    .cta-btn span {
-      display: block;
-      margin-top: 6px;
-      font-size: 0.85rem;
-      font-weight: 400;
-    }
-
-    footer {
-      background: rgba(0,0,0,0.4);
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
-      backdrop-filter: blur(8px);
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-    }
+    @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } }
   </style>
 </head>
 
 <body>
 
 <nav class="topbar">
-  <div class="container topbar-content">
-    <div class="topbar-left">
-      <img src="logo.jpg" alt="SudiaPass Logo">
-    </div>
-    <div class="topbar-actions">
-      <select onchange="location = this.value;">
-        <option value="index.html" selected>FR</option>
-        <option value="index-en.html">EN</option>
-        <option value="index-es.html">ES</option>
-      </select>
-      <button>Se connecter</button>
-    </div>
+  <div class="topbar-left">
+    <img src="logo.jpg" alt="SudiaPass Logo">
+  </div>
+  <div class="topbar-actions">
+    <select onchange="location = this.value;">
+      <option value="index.html" selected>FR</option>
+      <option value="index-en.html">EN</option>
+      <option value="index-es.html">ES</option>
+    </select>
+    <button>Se connecter</button>
+    <a href="OffresParSecteur.html">Nos offres par secteur</a>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="container">
-    <h1>SudiaPass</h1>
-    <p>Le pass malin pour profiter de réductions exclusives près de chez vous</p>
-    <button onclick="document.getElementById('cta-pass').scrollIntoView({behavior: 'smooth'})">
-      Découvrir les offres
-    </button>
-  </div>
+  <h1>SudiaPass</h1>
+  <p>Le pass malin pour profiter de réductions exclusives près de chez vous</p>
+  <button onclick="document.getElementById('cta-pass').scrollIntoView({behavior: 'smooth'})">
+    Découvrir les offres
+  </button>
 </header>
 
 <section>
   <div class="container">
     <h2 class="section-title">Comment ça marche ?</h2>
-    <div class="grid">
+    <div class="how-it-works">
       <div class="card">
         <h3>Achetez votre pass</h3>
         <p>Un abonnement simple pour accéder à toutes les offres partenaires.</p>
@@ -272,7 +169,7 @@
 
 <section>
   <div class="container">
-    <h2 class="section-title">Restaurants & commerces</h2>
+    <h2 class="section-title">Découvrez les offres près de chez vous</h2>
     <div class="swiper">
       <button class="nav-btn">◀</button>
       <div class="card swipe-card">
@@ -288,7 +185,7 @@
 <section class="cta" id="cta-pass">
   <div class="container">
     <h2 class="section-title">Choisissez votre SudiaPass</h2>
-    <p>Deux formules simples pour économiser toute l’année</p>
+    <p>Deux formules simples, mêmes avantages, adaptées à votre rythme pour économiser toute l’année</p>
 
     <div class="cta-buttons">
       <button class="cta-btn">
@@ -298,7 +195,7 @@
 
       <button class="cta-btn">
         Acheter SudiaPass Privilège
-        <span>Pass annuel – 59,90 €</span>
+        <span>Pass annuel – 59,90 €, soit 4,99€ par mois</span>
       </button>
     </div>
   </div>
