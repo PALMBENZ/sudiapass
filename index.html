@@ -38,22 +38,28 @@
 
     .hero button { padding: 8px 16px; font-size: 0.9rem; border-radius: 12px; }
 
-    ..topbar {
-  background: transparent; /* 🔥 laisse passer le dégradé */
+    .topbar {
+  background: transparent;
   position: sticky;
   top: 0;
   z-index: 50;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: center;       /* 🔥 tout sur la même ligne */
   height: 64px;
   padding: 0 20px;
 }
 
 
+
     .topbar-left img { height: 40px; width: auto; display: block; }
 
-    .topbar-actions { display: flex; gap: 12px; align-items: center; }
+    .topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;         /* 🔥 pousse TOUT à droite */
+}
+
 
     .topbar-actions a {
       padding: 8px 14px;
@@ -234,6 +240,7 @@
 
 </body>
 </html>
+
 
 
 
